@@ -2,28 +2,28 @@
 
 ## Specifications
 - Processor: Intel Core i3-6006U @2.0GHz
-- Memory: 8GB DDR4 Dual Channel @2133MHz
-- Integrated GPU: Intel HD 520
+- Memory: 8GB DDR4 Dual Channel @2400MHz
+- Integrated GPU: Intel HD Graphics 520
 - Discrete GPU: Nvidia MX130
 - Audio: Realtek ALC255
 - Storage: Samsung 860 EVO 500GB (replaced from WDC 1TB)
 - Ethernet: Realtek RTL8111
 - Wireless Combo: DW1820A M.2 NGFF key A/E (replaced from Intel NGW 3168)
-- Wifi Adapter: BCM94350ZAE
+- Wifi Adapter: BCM94350ZAE (vendor-id 14e4, device-id 43a3)
 - Bluetooth Adapter: BCM2045A0 USB
 - Touchpad: ELAN0501 I2C
 - Keyboard: PS2 Keyboard
 - Resolution: 1366x768@60Hz
-- Clover: Clover v2.4 r4920
-- OS Version: OS X Mojave 10.14.5
-- SMBIOS: MacBook Air 13" Early 2015 (MacBookAir7,2)
+- Bootloader: OpenCore 0.5.2 Release 
+- OS Version: OS X Catalina 10.15.1
+- SMBIOS: MacBook Pro 13" Early 2016 (MacBookPro13,1)
 
 ## What's Work?
-- Power Management, idle @700-900MHz
+- Power Management, idle @600-800MHz
 - Shutdown, Restart, Sleep
 - QE/CI Intel HD 520
 - Brightness
-- Battery up to 5 hours
+- Battery up to 6 hours
 - TRIM SSD
 - Ethernet
 - 2,4GHz and 5GHz
@@ -33,38 +33,21 @@
 - USB 3.0
 - VGA Port
 - HDMI Port
-- Audio + Combo Jack headphone
+- Audio + Combo Jack Headphone
 
 ## What's Not Work?
 - Nvidia MX130 (Optimus)
 - Combo Jack Microphone
-- SD Card reader
-- Facetime, iMessage
-- etc.
+- SD Card reader (Realtek devices with no support, for now maybe(?) )
+- Facetime, iMessage (don't have any iPhone to activate this)
 
 ## What's Disabled?
-- Nvidia MX130, disabled with DSDT
-- Webcam, disabled with USBInjectAll
+- Nvidia MX130, disabled with SSDT-DGPU
 - SD Card, disabled with USBInjectAll
-
-## What's Patched and used kext?
-- Power Management using ssdtPRGen and CPUFriend.kext + Lilu.kext
-- Battery using SMCBatteryManager.kext with VirtualSMC.kext + Lilu.kext
-- IGPU using WhateverGreen.kext + Lilu.kext and inject ig-platform-id 0x19160000
-- DGPU using DSDT patch and disable-external-gpu on IGPU device-properties
-- 5GHz wifi using AirportBrcmFixup.kext + Lilu.kext
-- Bluetooth using BrcmFirmwareRepo.kext + BrcmPatchRAM2.kext
-- Audio using injected layout-id 3 from device-properties and AppleALC.kext + Lilu.kext
-- Combo Jack using CodecCommander.kext
-- Ethernet using RealtekRTL8111.kext
-- USB Using USBInjectAll.kext and SSDT-UIAC with patched USB Power Property
-- Touchpad I2C using VoodooI2C.kext + VoodooI2CHID.kext and patched DSDT for GPIO Pinning
-- Keyboard using VoodooPS2Controller.kext
-- Drop all SSDT Table related with CPU Power Management
 
 ## Credit
 - Acidanthera
+- Alexandred
 - RehabMan
 - Andres
-- Alexandred
-- Another author of kext i used and tutorial, Thanks for all of your work.
+- Any person that help me in Forum, FB Group, Discord, and other place
